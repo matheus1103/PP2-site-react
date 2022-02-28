@@ -10,6 +10,7 @@ import { Main } from "./Pages/Main";
 import { Profile } from "./Pages/Profile";
 import { Sign_job } from "./Pages/Sign_job";
 import { Sign_up } from "./Pages/Sign_up";
+import TestPage from "./Pages/testpage";
 
 
 export function AppRoutes(){
@@ -22,6 +23,8 @@ export function AppRoutes(){
                 <Route path="/" element={<Main />}/>
                 <Route path="/job" element={<Job />}/>
                 <Route path="/profile" element={<Profile />}/>
+                <Route path="/test" element={<TestPage />}/>
+
             </Routes>
         </Router>
     )

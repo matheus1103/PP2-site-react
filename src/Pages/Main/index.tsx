@@ -1,5 +1,8 @@
 import { Job_box } from '../../Components/Job-box'
+import Burger from '../../Components/Burger'
+import Menu from '../../Components/Menu'
 import './style.css'
+import { useState } from 'react'
 
 export function Main(){
      const objeto_teste = [{
@@ -114,9 +117,10 @@ export function Main(){
             color: '#777BDC'
         }]
      }]
+     const [open, setOpen] = useState(false);
 
     return (
-
+    <>
         <div className='profile-container'>
             <div className='body-profile-container'>
                 <div>
@@ -130,6 +134,7 @@ export function Main(){
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

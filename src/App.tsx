@@ -1,29 +1,22 @@
-import { useState } from "react"
-import { Tweet } from "./Components/Tweet"
-
 import './App.css'
 import { AppRoutes } from "./Routes"
+import theme from './global/styles/theme';
+import { ThemeProvider } from 'styled-components';
+import Burger from './Components/Burger';
+import Menu from './Components/Menu';
+import { useState } from 'react';
+
+const arrayPages = []
 
 function App() {
-  const [tweets, setTweets] = useState<string[]>([
-    'Tweet 1',
-    'Tweet 2',
-    'Tweet 3',
-    'Tweet 4',
-  ])
-
-  function createTweet(){
-    setTweets([...tweets,'Tweet 5'])
-  }
+  const [open, setOpen] = useState(false);
 
   return(
-   <AppRoutes />
-    /* <div>
-      {tweets.map(tweet => {
-        return <Tweet text={tweet}/>
-      })}
-      <button onClick={createTweet}>Adicionar Tweet</button>
-    </div>*/
+    <ThemeProvider theme={theme}>
+      <Burger open={open} setOpen={setOpen} />
+      <Menu open={open} setOpen={setOpen} />
+      <AppRoutes />
+    </ThemeProvider>
   )
 }
 
