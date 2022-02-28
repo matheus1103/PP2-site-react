@@ -1,0 +1,15 @@
+.subtitle{
+    margin-left: 20px;
+}
+
+.job-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.categorys{
+    display: flex;
+}
+
