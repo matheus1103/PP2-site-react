@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,16 +15,19 @@ import { Profile } from "./Pages/Profile";
 import { Sign_job } from "./Pages/Sign_job";
 import { Sign_up } from "./Pages/Sign_up";
 import TestPage from "./Pages/testpage";
+import { useOnClickOutside } from './hooks';
 
 
 export function AppRoutes(){
     const [open, setOpen] = useState(false);
-
+    const node = useRef<HTMLDivElement>(null);
+    useOnClickOutside(node, () => setOpen(false));
     return(
         <Router>
-            <Menu open={open} setOpen={setOpen} />
-            <Burger open={open} setOpen={setOpen} />
-
+            <div ref={node}>
+                <Burger open={open} setOpen={setOpen} />
+                <Menu open={open} setOpen={setOpen} />
+            </div>
             <Routes>
 
                 <Route path="/login" element={<Login />}/>

@@ -4,7 +4,7 @@ type BurgerProps ={
     open:boolean
 }
 export const StyledBurger = styled.button<BurgerProps>`
-  position: absolute;
+ position: fixed;
   top: 5%;
   left: 2rem;
   display: flex;
