@@ -1,8 +1,11 @@
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+import Burger from "./Components/Burger";
+import Menu from "./Components/Menu";
 import { Contact } from "./Pages/Contact";
 
 import { Job } from "./Pages/Job";
@@ -15,9 +18,15 @@ import TestPage from "./Pages/testpage";
 
 
 export function AppRoutes(){
+    const [open, setOpen] = useState(false);
+
     return(
         <Router>
+            <Menu open={open} setOpen={setOpen} />
+            <Burger open={open} setOpen={setOpen} />
+
             <Routes>
+
                 <Route path="/login" element={<Login />}/>
                 <Route path="/sign_up" element={<Sign_up />}/>
                 <Route path="/sign_job" element={<Sign_job />}/>

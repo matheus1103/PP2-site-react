@@ -1,5 +1,6 @@
 // Menu.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { StyledMenu } from './Menu.styled';
 type MenuProps = {
   open: boolean,
@@ -9,31 +10,31 @@ const Menu = ({ open }:MenuProps) => {
   return (
     <StyledMenu open={open}>
       {!window.location.pathname.includes('text') && (
-        <a href="/profile">
+        <Link to="/profile">
           <span role="img" aria-label="Perfil">&#128100;</span>
           Perfil
-        </a>
+        </Link>
       )}
-      <a href="/sign_up">
+      <Link to="/sign_up">
         <span role="img" aria-label="vagas">&#128395;</span>
         Registrar
-      </a>
-      <a href="/login">
+      </Link>
+      <Link to="/login">
         <span role="img" aria-label="vagas">&#128640;</span>
         Entrar
-      </a>
-      <a href="/">
+      </Link>
+      <Link to="/">
         <span role="img" aria-label="vagas">&#x1f4b8;</span>
         Vagas
-        </a>
-      <a href="/contact">
+        </Link>
+      <Link to="/contact">
         <span role="img" aria-label="contact">&#x1f4e9;</span>
         Contato
-      </a>
-      <a href="/sign_job">
+      </Link>
+      <Link to="/sign_job">
         <span role="img" aria-label="criar-vaga">&#128229;</span>
         Cadastrar Vaga
-      </a>
+      </Link>
     </StyledMenu>
   )
 }

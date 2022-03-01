@@ -13,8 +13,6 @@ function App() {
 
   return(
     <ThemeProvider theme={theme}>
-      <Burger open={open} setOpen={setOpen} />
-      <Menu open={open} setOpen={setOpen} />
       <AppRoutes />
     </ThemeProvider>
   )
