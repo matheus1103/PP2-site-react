@@ -21,7 +21,9 @@ export function Job(){
             <div className='job-header'>
                 <div className='title-categories-container'>
                     <div className="imagem-provisoria" />
-                    <div style={{marginLeft:'20px'}}>
+                    <div style={{
+                        marginLeft:'20px'
+                        }}>
                         <h2>{objeto_teste.title}</h2>
                         <div className='categories-container'>
                             {objeto_teste.categories.map(item=>(
