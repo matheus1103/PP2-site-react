@@ -26,7 +26,7 @@ const Menu = ({ open }:MenuProps) => {
         <span role="img" aria-label="vagas">&#x1f4b8;</span>
         Vagas
         </a>
-      <a href="/">
+      <a href="/contact">
         <span role="img" aria-label="contact">&#x1f4e9;</span>
         Contato
       </a>

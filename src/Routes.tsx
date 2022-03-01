@@ -3,6 +3,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { Contact } from "./Pages/Contact";
 
 import { Job } from "./Pages/Job";
 import { Login } from "./Pages/Login";
@@ -24,7 +25,8 @@ export function AppRoutes(){
                 <Route path="/job" element={<Job />}/>
                 <Route path="/profile" element={<Profile />}/>
                 <Route path="/test" element={<TestPage />}/>
-
+                <Route path="/contact" element={<Contact />}/>
+                <Route path="/job" element={<Job />}/>
             </Routes>
         </Router>
     )

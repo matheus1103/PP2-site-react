@@ -32,17 +32,13 @@ export function Profile(){
      }]
 
     return (
-
         <div className='profile-container'>
-            <div className='body-profile-container'>
-                <div>
-                    <h1 className='title'>Perfil</h1>
-                </div>
-
-                <div className='job-container'>
-                    <div className='subtitle'>
-                        <h3>Vagas candidatadas:</h3>
+            <div className='testinho'>
+                <div className='testinho2'>
+                    <div className='title-profile'>
+                        <h3>Perfil</h3>
                     </div>
+                    <h3>Vagas candidatadas:</h3>
                     {objeto_teste.map(item=>(
                         <Job_box title={item.title} categories={item.categories} />
                     ))}

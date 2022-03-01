@@ -15,7 +15,9 @@ export function Login(){
                 </div>
                 <InputText placeholder='Usuário'/>
                 <InputText placeholder='Senha'/>
-                <SubmitButton label='Entrar' onClick={teste} />
+                <SubmitButton style={{
+                    marginTop:'20px'
+                }} label='Entrar' onClick={teste} />
 
             </div>
         </div>

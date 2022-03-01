@@ -121,8 +121,8 @@ export function Main(){
 
     return (
     <>
-        <div className='profile-container'>
-            <div className='body-profile-container'>
+        <div className='main-container'>
+            <div className='body-main-container'>
                 <div>
                     <h1 className='title'>Vagas disponiveis</h1>
                 </div>

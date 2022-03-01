@@ -25,7 +25,8 @@ export function Sign_job(){
                 style={{
                     marginTop:'20px',
                     width:'20%',
-                    height:'30px'
+                    height:'30px',
+                    fontSize:'18px'
                 }}/>
             </div>
         </div>

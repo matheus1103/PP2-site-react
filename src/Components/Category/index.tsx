@@ -5,8 +5,8 @@ type CategoryProps = {
     color:string
 }
 
-export function Category(props:CategoryProps){
+export function Category({color, text, ...rest}:CategoryProps){
     return(
-        <div style={{background:props.color}} className='category'>{props.text}</div>
+        <div {...rest} style={{background:color}} className='category' >{text}</div>
     )
 }
