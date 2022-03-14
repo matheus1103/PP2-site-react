@@ -1,0 +1,30 @@
+name: Email
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: email/reenviar
+    metadata:
+      title: 'Reenviar email de confirmação de conta'
+      description: 'Reenviar email de confirmação de conta'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message": "Email já está verificado."}'
+        headers: []
+        description: '200'
+      -
+        status: 200
+        content: '{"message": "Email reenviado."}'
+        headers: []
+        description: '200'
+    responseFields: []

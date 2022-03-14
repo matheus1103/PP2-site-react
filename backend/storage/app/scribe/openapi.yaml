@@ -1,0 +1,452 @@
+openapi: 3.0.3
+info:
+  title: Projeto_Pratico
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /auth/cadastro:
+    post:
+      summary: 'Criar novo usuário'
+      description: 'Cria novo usuário'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        201:
+          description: '201'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Conta criada.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Conta criada.'
+        422:
+          description: '422'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    nome:
+                      - 'O campo nome é obrigatório.'
+                      - 'O campo nome deve ser uma string.'
+                      - 'O campo nome não pode ser superior a 100 caracteres.'
+                    email:
+                      - 'O campo email é obrigatório.'
+                      - 'O campo email deve ser uma string.'
+                      - 'O campo email não pode ser superior a 100 caracteres.'
+                      - 'O campo email deve ser um endereço de e-mail válido.'
+                      - 'O campo email já está sendo utilizado.'
+                    telefone:
+                      - 'O campo telefone é obrigatório.'
+                      - 'O campo telefone não é um telefone com DDD válido.'
+                      - 'O campo telefone não pode ser superior a 13 caracteres.'
+                    senha:
+                      - 'O campo senha é obrigatório.'
+                      - 'O campo senha deve ser uma string.'
+                      - 'O campo senha deve ter pelo menos 8 caracteres.'
+                      - 'O campo senha não pode ser superior a 20 caracteres.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    example:
+                      nome:
+                        - 'O campo nome é obrigatório.'
+                        - 'O campo nome deve ser uma string.'
+                        - 'O campo nome não pode ser superior a 100 caracteres.'
+                      email:
+                        - 'O campo email é obrigatório.'
+                        - 'O campo email deve ser uma string.'
+                        - 'O campo email não pode ser superior a 100 caracteres.'
+                        - 'O campo email deve ser um endereço de e-mail válido.'
+                        - 'O campo email já está sendo utilizado.'
+                      telefone:
+                        - 'O campo telefone é obrigatório.'
+                        - 'O campo telefone não é um telefone com DDD válido.'
+                        - 'O campo telefone não pode ser superior a 13 caracteres.'
+                      senha:
+                        - 'O campo senha é obrigatório.'
+                        - 'O campo senha deve ser uma string.'
+                        - 'O campo senha deve ter pelo menos 8 caracteres.'
+                        - 'O campo senha não pode ser superior a 20 caracteres.'
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: 'Nome do usuário. O campo value não pode ser superior a 100 caracteres.'
+                  example: 'Pedro Paulo'
+                email:
+                  type: string
+                  description: 'Email do usuário. O campo value deve ser um endereço de e-mail válido. O campo value não pode ser superior a 100 caracteres.'
+                  example: email@email.com
+                telefone:
+                  type: string
+                  description: 'telefone do usuário. O campo value tem um formato inválido. O campo value não pode ser superior a 14 caracteres.'
+                  example: (38)3221-2011
+                senha:
+                  type: string
+                  description: 'Senha do usuário. O campo value deve ter pelo menos 8 caracteres. O campo value não pode ser superior a 20 caracteres.'
+                  example: senha@@@
+                lembrar:
+                  type: boolean
+                  description: 'Lembrar do usuário.'
+                  example: false
+              required:
+                - nome
+                - email
+                - telefone
+                - senha
+  /auth/login:
+    post:
+      summary: 'Logar no App'
+      description: 'Logar no App'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  token: 13|HfI40OFYLjWEahpM4QgWEvdqbXbVRpPIelNehKq0
+                properties:
+                  token:
+                    type: string
+                    example: 13|HfI40OFYLjWEahpM4QgWEvdqbXbVRpPIelNehKq0
+        422:
+          description: '422'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    email:
+                      - 'O campo email é obrigatório.'
+                      - 'O campo email selecionado é inválido.'
+                      - 'O campo email não pode ser superior a 100 caracteres.'
+                      - 'Essas credenciais não foram encontradas em nossos registros.'
+                    senha:
+                      - 'O campo senha é obrigatório.'
+                      - 'O campo senha deve ter pelo menos 8 caracteres.'
+                      - 'O campo senha não pode ser superior a 20 caracteres.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    example:
+                      email:
+                        - 'O campo email é obrigatório.'
+                        - 'O campo email selecionado é inválido.'
+                        - 'O campo email não pode ser superior a 100 caracteres.'
+                        - 'Essas credenciais não foram encontradas em nossos registros.'
+                      senha:
+                        - 'O campo senha é obrigatório.'
+                        - 'O campo senha deve ter pelo menos 8 caracteres.'
+                        - 'O campo senha não pode ser superior a 20 caracteres.'
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email do usuário. O campo value não pode ser superior a 100 caracteres.'
+                  example: email@email.com
+                senha:
+                  type: string
+                  description: 'Senha do usuário. O campo value deve ter pelo menos 8 caracteres. O campo value não pode ser superior a 20 caracteres.'
+                  example: senha@@
+              required:
+                - email
+                - senha
+  /email/reenviar:
+    post:
+      summary: 'Reenviar email de confirmação de conta'
+      description: 'Reenviar email de confirmação de conta'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Email reenviado.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Email reenviado.'
+      tags:
+        - Email
+  /password/email:
+    post:
+      summary: 'Enviar link para resetar a senha do usuário para o Email'
+      description: 'Envia link para resetar a senha do usuário para o Email'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Enviamos seu link de redefinição de senha por e-mail!'
+                properties:
+                  message:
+                    type: string
+                    example: 'Enviamos seu link de redefinição de senha por e-mail!'
+        422:
+          description: '422'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    email:
+                      - 'O campo email é obrigatório.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    example:
+                      email:
+                        - 'O campo email é obrigatório.'
+      tags:
+        - Password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email do usuário. O campo value não pode ser superior a 50 caracteres.'
+                  example: email@email.com
+              required:
+                - email
+  /password/reset:
+    post:
+      summary: 'Processa requisição para resetar senha'
+      description: 'Processa requisição para resetar senha'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: '422'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    email:
+                      - 'O campo email é obrigatório.'
+                      - 'O campo email deve ser uma string.'
+                      - 'O campo email deve ser um endereço de e-mail válido.'
+                      - 'O campo email não pode ser superior a 100 caracteres.'
+                    password:
+                      - 'O campo senha é obrigatório.'
+                    password_confirmation:
+                      - 'O campo confirmação da senha é obrigatório.'
+                      - 'O campo senha de confirmação não confere.'
+                      - 'O campo senha deve ter pelo menos 8 caracteres.'
+                    token:
+                      - 'O campo token é obrigatório.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    example:
+                      email:
+                        - 'O campo email é obrigatório.'
+                        - 'O campo email deve ser uma string.'
+                        - 'O campo email deve ser um endereço de e-mail válido.'
+                        - 'O campo email não pode ser superior a 100 caracteres.'
+                      password:
+                        - 'O campo senha é obrigatório.'
+                      password_confirmation:
+                        - 'O campo confirmação da senha é obrigatório.'
+                        - 'O campo senha de confirmação não confere.'
+                        - 'O campo senha deve ter pelo menos 8 caracteres.'
+                      token:
+                        - 'O campo token é obrigatório.'
+      tags:
+        - Password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email do usuário. O campo value deve ser um endereço de e-mail válido. O campo value não pode ser superior a 100 caracteres.'
+                  example: email@email.com
+                password:
+                  type: string
+                  description: 'Senha nova do usuário. O campo value deve ter pelo menos 8 caracteres. O campo value não pode ser superior a 18 caracteres.'
+                  example: senhanova@@
+                password_confirmation:
+                  type: string
+                  description: 'Confirmação da senha nova do usuário. O campo value deve ter pelo menos 8 caracteres. O campo value não pode ser superior a 18 caracteres.'
+                  example: senhanova@@
+                token:
+                  type: string
+                  description: 'token do usuário. O campo value não pode ser superior a 255 caracteres.'
+                  example: 13|HfI40OFYLjWEahpM4QgWEvdqbXbVRpPIelNehKq0
+              required:
+                - email
+                - password
+                - password_confirmation
+                - token
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

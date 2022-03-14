@@ -1,0 +1,241 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "localhost"
+        }
+    ],
+    "info": {
+        "name": "Projeto_Pratico",
+        "_postman_id": "01bdc96b-b741-4b51-a7f8-d3ea198d18e4",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "description": "",
+            "item": [
+                {
+                    "name": "Criar novo usu\u00e1rio",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "auth\/cadastro",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/auth\/cadastro"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"nome\":\"Pedro Paulo\",\"email\":\"email@email.com\",\"telefone\":\"(38)3221-2011\",\"senha\":\"senha@@@\",\"lembrar\":false}"
+                        },
+                        "description": "Cria novo usu\u00e1rio"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"message\": \"Conta criada.\"}",
+                            "name": "201"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"message\": \"The given data was invalid.\",\r\n    \"errors\": {\r\n        \"nome\": [\r\n            \"O campo nome \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo nome deve ser uma string.\",\r\n            \"O campo nome n\u00e3o pode ser superior a 100 caracteres.\"\r\n        ],\r\n        \"email\": [\r\n            \"O campo email \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo email deve ser uma string.\",\r\n            \"O campo email n\u00e3o pode ser superior a 100 caracteres.\",\r\n            \"O campo email deve ser um endere\u00e7o de e-mail v\u00e1lido.\",\r\n            \"O campo email j\u00e1 est\u00e1 sendo utilizado.\"\r\n        ],\r\n        \"telefone\": [\r\n            \"O campo telefone \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo telefone n\u00e3o \u00e9 um telefone com DDD v\u00e1lido.\",\r\n            \"O campo telefone n\u00e3o pode ser superior a 13 caracteres.\"\r\n        ],\r\n        \"senha\": [\r\n            \"O campo senha \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo senha deve ser uma string.\",\r\n            \"O campo senha deve ter pelo menos 8 caracteres.\",\r\n            \"O campo senha n\u00e3o pode ser superior a 20 caracteres.\"\r\n        ]\r\n    }\r\n}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logar no App",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "auth\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"email@email.com\",\"senha\":\"senha@@\"}"
+                        },
+                        "description": "Logar no App"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"token\": \"13|HfI40OFYLjWEahpM4QgWEvdqbXbVRpPIelNehKq0\"}",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"message\": \"The given data was invalid.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"O campo email \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo email selecionado \u00e9 inv\u00e1lido.\",\r\n            \"O campo email n\u00e3o pode ser superior a 100 caracteres.\",\r\n            \"Essas credenciais n\u00e3o foram encontradas em nossos registros.\"\r\n        ],\r\n        \"senha\": [\r\n            \"O campo senha \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo senha deve ter pelo menos 8 caracteres.\",\r\n            \"O campo senha n\u00e3o pode ser superior a 20 caracteres.\"\r\n        ]\r\n    }\r\n}",
+                            "name": "422"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Email",
+            "description": "",
+            "item": [
+                {
+                    "name": "Reenviar email de confirma\u00e7\u00e3o de conta",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "email\/reenviar",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/email\/reenviar"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Reenviar email de confirma\u00e7\u00e3o de conta"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\": \"Email j\u00e1 est\u00e1 verificado.\"}",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\": \"Email reenviado.\"}",
+                            "name": "200"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Password",
+            "description": "",
+            "item": [
+                {
+                    "name": "Enviar link para resetar a senha do usu\u00e1rio para o Email",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "password\/email",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/password\/email"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"email@email.com\"}"
+                        },
+                        "description": "Envia link para resetar a senha do usu\u00e1rio para o Email"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\": \"Enviamos seu link de redefini\u00e7\u00e3o de senha por e-mail!\"}",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"message\": \"The given data was invalid.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"O campo email \u00e9 obrigat\u00f3rio.\"\r\n        ]\r\n    }\r\n}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Processa requisi\u00e7\u00e3o para resetar senha",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "password\/reset",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/password\/reset"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"email@email.com\",\"password\":\"senhanova@@\",\"password_confirmation\":\"senhanova@@\",\"token\":\"13|HfI40OFYLjWEahpM4QgWEvdqbXbVRpPIelNehKq0\"}"
+                        },
+                        "description": "Processa requisi\u00e7\u00e3o para resetar senha"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"message\": \"The given data was invalid.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"O campo email \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo email deve ser uma string.\",\r\n            \"O campo email deve ser um endere\u00e7o de e-mail v\u00e1lido.\",\r\n            \"O campo email n\u00e3o pode ser superior a 100 caracteres.\"\r\n        ],\r\n        \"password\": [\r\n            \"O campo senha \u00e9 obrigat\u00f3rio.\"\r\n        ],\r\n        \"password_confirmation\": [\r\n            \"O campo confirma\u00e7\u00e3o da senha \u00e9 obrigat\u00f3rio.\",\r\n            \"O campo senha de confirma\u00e7\u00e3o n\u00e3o confere.\",\r\n            \"O campo senha deve ter pelo menos 8 caracteres.\"\r\n        ],\r\n        \"token\": [\r\n            \"O campo token \u00e9 obrigat\u00f3rio.\"\r\n        ]\r\n    }\r\n}",
+                            "name": "422"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}

@@ -1,0 +1,99 @@
+name: Auth
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: auth/cadastro
+    metadata:
+      title: 'Criar novo usuário'
+      description: 'Cria novo usuário'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      nome:
+        name: nome
+        description: 'Nome do usuário. O campo value não pode ser superior a 100 caracteres.'
+        required: true
+        example: 'Pedro Paulo'
+        type: string
+      email:
+        name: email
+        description: 'Email do usuário. O campo value deve ser um endereço de e-mail válido. O campo value não pode ser superior a 100 caracteres.'
+        required: true
+        example: email@email.com
+        type: string
+      telefone:
+        name: telefone
+        description: 'telefone do usuário. O campo value tem um formato inválido. O campo value não pode ser superior a 14 caracteres.'
+        required: true
+        example: (38)3221-2011
+        type: string
+      senha:
+        name: senha
+        description: 'Senha do usuário. O campo value deve ter pelo menos 8 caracteres. O campo value não pode ser superior a 20 caracteres.'
+        required: true
+        example: senha@@@
+        type: string
+      lembrar:
+        name: lembrar
+        description: 'Lembrar do usuário.'
+        required: false
+        example: false
+        type: boolean
+    responses:
+      -
+        status: 201
+        content: '{"message": "Conta criada."}'
+        headers: []
+        description: '201'
+      -
+        status: 422
+        content: "{\r\n    \"message\": \"The given data was invalid.\",\r\n    \"errors\": {\r\n        \"nome\": [\r\n            \"O campo nome é obrigatório.\",\r\n            \"O campo nome deve ser uma string.\",\r\n            \"O campo nome não pode ser superior a 100 caracteres.\"\r\n        ],\r\n        \"email\": [\r\n            \"O campo email é obrigatório.\",\r\n            \"O campo email deve ser uma string.\",\r\n            \"O campo email não pode ser superior a 100 caracteres.\",\r\n            \"O campo email deve ser um endereço de e-mail válido.\",\r\n            \"O campo email já está sendo utilizado.\"\r\n        ],\r\n        \"telefone\": [\r\n            \"O campo telefone é obrigatório.\",\r\n            \"O campo telefone não é um telefone com DDD válido.\",\r\n            \"O campo telefone não pode ser superior a 13 caracteres.\"\r\n        ],\r\n        \"senha\": [\r\n            \"O campo senha é obrigatório.\",\r\n            \"O campo senha deve ser uma string.\",\r\n            \"O campo senha deve ter pelo menos 8 caracteres.\",\r\n            \"O campo senha não pode ser superior a 20 caracteres.\"\r\n        ]\r\n    }\r\n}"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: auth/login
+    metadata:
+      title: 'Logar no App'
+      description: 'Logar no App'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email do usuário. O campo value não pode ser superior a 100 caracteres.'
+        required: true
+        example: email@email.com
+        type: string
+      senha:
+        name: senha
+        description: 'Senha do usuário. O campo value deve ter pelo menos 8 caracteres. O campo value não pode ser superior a 20 caracteres.'
+        required: true
+        example: senha@@
+        type: string
+    responses:
+      -
+        status: 200
+        content: '{"token": "13|HfI40OFYLjWEahpM4QgWEvdqbXbVRpPIelNehKq0"}'
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"message\": \"The given data was invalid.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"O campo email é obrigatório.\",\r\n            \"O campo email selecionado é inválido.\",\r\n            \"O campo email não pode ser superior a 100 caracteres.\",\r\n            \"Essas credenciais não foram encontradas em nossos registros.\"\r\n        ],\r\n        \"senha\": [\r\n            \"O campo senha é obrigatório.\",\r\n            \"O campo senha deve ter pelo menos 8 caracteres.\",\r\n            \"O campo senha não pode ser superior a 20 caracteres.\"\r\n        ]\r\n    }\r\n}"
+        headers: []
+        description: '422'
+    responseFields: []
